@@ -1,9 +1,17 @@
 const connectMongo = require("./db");
 
 const express = require("express");
+var cors = require("cors");
+const corsOptions = {
+  origin: "*",
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200
+};
+
 connectMongo();
 
 const app = express();
+app.use(cors(corsOptions)); // Use this after the variable declaration
 const port = 5000;
 app.use(express.json());
 
@@ -15,5 +23,5 @@ app.get("/", (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  console.log(`iNotebook backend listening on port http://localhost:${port}`);
 });

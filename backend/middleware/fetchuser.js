@@ -10,6 +10,7 @@ const fetchuser = async (req, res, next) => {
     const JWT_SECRET = "shhhh";
     const data = jwt.verify(token, JWT_SECRET);
     req.user = data.user;
+    console.log("fetchuser", data);
     next();
   } catch (error) {
     res.status(401).send({
