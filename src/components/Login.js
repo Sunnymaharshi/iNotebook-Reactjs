@@ -1,36 +1,36 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useContext, useState, useEffect } from "react";
+import NoteContext from "./../context/notes/NoteContext";
 
 const Login = (props) => {
   const [credentials, setCredentials] = useState({
     email: "",
     password: ""
   });
-  let navigate = useNavigate();
+  const context = useContext(NoteContext);
+  const { setNotes, notes } = context;
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      props.setLogin(true);
+      const lnotes = localStorage.getItem("notes");
+      setNotes(JSON.parse(lnotes));
+    } // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const onChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/api/auth/login", {
-      method: "POST", // *GET, POST, PUT, DELETE, etc.
 
-      headers: {
-        "Content-Type": "application/json"
-        // 'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: JSON.stringify({
-        email: credentials.email,
-        password: credentials.password
-      })
-    });
-    const json = await response.json();
-
-    if (json.success) {
-      localStorage.setItem("token", json.authToken);
+    if (
+      credentials.email === "sunny@sunny.com" &&
+      credentials.password === "sunny@sunny.com"
+    ) {
+      localStorage.setItem("token", "dummy-token");
       props.showAlert("Logged in Successfully", "success");
-      navigate("/");
+      props.setLogin(true);
+      localStorage.setItem("notes", JSON.stringify(notes));
     } else {
       props.showAlert("incorrect credentials", "danger");
     }
@@ -71,7 +71,7 @@ const Login = (props) => {
         </div>
 
         <button type="submit" className="btn btn-primary">
-          Submit
+          Login
         </button>
       </form>
     </div>

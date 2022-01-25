@@ -1,27 +1,19 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import NoteContext from "./../context/notes/NoteContext";
 import Addnote from "./Addnote";
 import NoteItem from "./NoteItem";
-import { useNavigate } from "react-router-dom";
 import "./Notes.css";
 export default function Notes(props) {
   const { showAlert } = props;
   const context = useContext(NoteContext);
-  const { notes, fetchAllNotes, editNote } = context;
-  let navigate = useNavigate();
+  const { notes, editNote } = context;
+
   const [note, setNote] = useState({
-    id: "",
+    id: -1,
     etitle: "",
     edescription: "",
     etag: ""
   });
-  useEffect(() => {
-    if (localStorage.getItem("token")) {
-      fetchAllNotes();
-    } else {
-      navigate("/login");
-    }
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const ref = useRef(null);
   const refClose = useRef(null);
@@ -30,10 +22,10 @@ export default function Notes(props) {
     refAddNote.current.scrollIntoView();
   };
 
-  const updatenote = (currentnote) => {
+  const updatenote = (currentnote, id) => {
     ref.current.click();
     setNote({
-      id: currentnote._id,
+      id: id,
       etitle: currentnote.title,
       edescription: currentnote.description,
       etag: currentnote.tag
@@ -56,13 +48,14 @@ export default function Notes(props) {
           <div className="container">
             {notes.length === 0 && "No Notes to display"}
           </div>
-          {notes.map((note) => {
+          {notes.map((note, index) => {
             return (
-              <div className="col-md-6" key={note._id}>
+              <div className="col-md-6" key={index}>
                 <NoteItem
-                  key={note._id}
+                  key={index}
                   showAlert={showAlert}
                   note={note}
+                  index={index}
                   updatenote={updatenote}
                 />
               </div>

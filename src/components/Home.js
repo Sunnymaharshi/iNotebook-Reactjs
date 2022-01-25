@@ -1,5 +1,4 @@
 import React from "react";
-import Addnote from "./Addnote";
 import Notes from "./Notes";
 
 function Home(props) {

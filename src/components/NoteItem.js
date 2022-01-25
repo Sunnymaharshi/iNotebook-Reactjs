@@ -39,20 +39,20 @@ function NoteItem(props) {
             color: "red"
           }}
           onClick={() => {
-            deleteNote(note._id);
+            deleteNote(props.index);
             props.showAlert("Deleted Note Successfully", "success");
           }}
         ></i>
         <i
           className="far fa-edit mx-2"
           onClick={() => {
-            updatenote(note);
+            updatenote(note, props.index);
           }}
         ></i>
       </div>
 
       <p className="card-text">{note.description}</p>
-      {note.tag.length > 1 && (
+      {note.tag && note.tag.length > 1 && (
         <div
           className="badge rounded-pill"
           style={{
