@@ -1,8 +1,8 @@
-- ## MongoDB as backend
-- ## Mongoose for operations on MongoDB
-- ## APIs for CRUD operations on Notes MongoDB database
-- ## User login,signup, authentication using jwttoken
+- ### MongoDB as backend
+- ### Mongoose for operations on MongoDB
+- ### APIs for CRUD operations on Notes MongoDB database
+- ### User login,signup, authentication using jwttoken
 
-- ## Context APIs for state management in react
+- ### Context APIs for state management in react
 
-### checkout other branch for hosted site source code
+#### checkout other branch for hosted site source code
