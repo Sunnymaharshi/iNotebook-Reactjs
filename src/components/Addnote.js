@@ -24,8 +24,8 @@ export default function Addnote(props) {
     setNote({ ...note, [e.target.name]: e.target.value });
   };
   return (
-    <div className="container">
-      <h2>Add a Note </h2>
+    <div className="container ">
+      <h2 className="text-center">Add a Note </h2>
       <form className="mt-3">
         <div className="mb-1">
           <label htmlFor="title" className="form-label">
@@ -69,14 +69,16 @@ export default function Addnote(props) {
             onChange={onChange}
           />
         </div>
-        <button
-          type="submit"
-          className="btn btn-primary"
-          onClick={handleClick}
-          disabled={note.description.length < 5 || note.title.length < 5}
-        >
-          Add Note
-        </button>
+        <div className="text-center">
+          <button
+            type="submit"
+            className="btn btn-primary"
+            onClick={handleClick}
+            disabled={note.description.length < 5 || note.title.length < 5}
+          >
+            Add Note
+          </button>
+        </div>
       </form>
     </div>
   );

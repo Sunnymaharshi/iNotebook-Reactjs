@@ -23,23 +23,19 @@ const Login = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (
-      credentials.email === "sunny@sunny.com" &&
-      credentials.password === "sunny@sunny.com"
-    ) {
-      localStorage.setItem("token", "dummy-token");
-      props.showAlert("Logged in Successfully", "success");
-      props.setLogin(true);
-      localStorage.setItem("notes", JSON.stringify(notes));
-    } else {
-      props.showAlert("incorrect credentials", "danger");
-    }
+    localStorage.setItem("token", "dummy-token");
+    props.showAlert("Logged in Successfully", "success");
+    props.setLogin(true);
+    localStorage.setItem("notes", JSON.stringify(notes));
   };
   return (
     <div className="container mt-2 col-md-6 ">
       <h2 className="text-center">Login to iNotebook</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
+          <div>
+            <small className="form-text">Use dummy email and password</small>
+          </div>
           <label htmlFor="email" className="form-label">
             Email
           </label>

@@ -44,13 +44,13 @@ export default function Notes(props) {
     <div className="my-3 row">
       <div className="col-md-8">
         <div className="row">
-          <h2 className="text-center mb-3">Your Notes</h2>
+          <h2 className="text-center mb-3">My Notes</h2>
           <div className="container">
             {notes.length === 0 && "No Notes to display"}
           </div>
           {notes.map((note, index) => {
             return (
-              <div className="col-md-6" key={index}>
+              <div className="col-md-12 col-lg-6" key={index}>
                 <NoteItem
                   key={index}
                   showAlert={showAlert}
@@ -167,7 +167,7 @@ export default function Notes(props) {
         className="fa fa-plus fa-lg addnote"
         style={{
           position: "fixed",
-          bottom: "50px",
+          bottom: "60px",
           left: "0",
           fontSize: "2.5rem",
           zIndex: "1"

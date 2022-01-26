@@ -6,9 +6,9 @@ export default function Alert(props) {
       <div
         style={{
           position: "fixed",
-          top: "10vh",
-          right: "0px",
-          width: "25%",
+          top: "0",
+          right: "0",
+          display: "inline-block",
           zIndex: "9999",
           marginRight: "10px"
         }}
