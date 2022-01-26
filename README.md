@@ -1,8 +1,8 @@
-- ### MongoDB as backend
-- ### Mongoose for operations on MongoDB
-- ### APIs for CRUD operations on Notes MongoDB database
-- ### User login,signup, authentication using jwttoken
+## [Site Link](https://sunnymaharshi.github.io/iNotebook-Reactjs/)
+
+- ### used localStorage instead of MongoDB as backend
+
+- ### User login with dummy credentials
 
 - ### Context APIs for state management in react
-
-#### checkout other branch for hosted site source code
+- ### Clearing browser history & data will delete all your notes
